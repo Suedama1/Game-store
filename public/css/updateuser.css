@@ -1,0 +1,57 @@
+.container {
+    max-width: 1200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-box {
+    border: 1px solid transparent;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-box:hover {
+    border-color: #ced4da;
+    background-color: transparent;
+    color: white;
+}
+
+.btn-box:hover .nav-link {
+    border-radius: 4px;
+    padding: 6px 12px;
+    border: 1px solid #ced4da;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .profile-section .col-md-6:first-child {
+        border-right: 1px solid white;
+    }
+}
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image img {
+    margin-top: 75px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.formstuff {
+    margin-top: 20px;
+}

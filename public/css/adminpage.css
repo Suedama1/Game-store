@@ -1,0 +1,164 @@
+.container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.admin-section {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow: auto;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-option {
+    width: 200px;
+    height: 50px;
+    background-color: #363636;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.admin-option:hover {
+    background-color: #555555;
+    border-color: lightgreen;
+}
+
+.admin-option-text {
+    text-align: center;
+    font-size: 18px;
+}
+
+.form-box {
+    width: 200%;
+    max-width: 500px;
+    padding: 20px;
+    display: none;
+}
+
+.form-box.active {
+    display: block;
+}
+
+.vertical-line {
+    align-self: stretch;
+    width: 2px;
+    background-color: #555555;
+    margin: 0 20px;
+}
+
+.forms-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.btn-box {
+    border: 1px solid transparent;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-box:hover {
+    border-color: #ced4da;
+    background-color: transparent;
+    color: white;
+}
+
+.btn-box:hover .nav-link {
+    border-radius: 4px;
+    padding: 6px 12px;
+    border: 1px solid #ced4da;
+    color: white;
+}
+
+.form-label {
+    margin-top: 1px;
+}
+
+.form-field {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    color: #212529;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-field:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.form-button {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 576px) {
+    .admin-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .forms-container {
+        margin-top: 10px;
+    }
+
+    .form-box {
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+.delete-button {
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+#platform-checkboxes label,
+#category-checkboxes label {
+    margin-left: 5px;
+}

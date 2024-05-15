@@ -1,0 +1,236 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/images/splogo.png" type="image/png">
+    <title>SP Games Admin Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js">
+    </script>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="./css/adminpage.css" rel="stylesheet">
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="instagram" viewBox="0 0 24 24">
+            <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+        </symbol>
+    </svg>
+    <script src="./js/checkifadmin.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="/images/logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link removeLogin" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link removeLogin" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="admin-section">
+            <div class="options-container">
+                <div class="admin-option" onclick="toggleForm('game-form')">
+                    <span class="admin-option-text">Add a new game</span>
+                </div>
+                <div class="admin-option" onclick="toggleForm('category-form')">
+                    <span class="admin-option-text">Add a new category</span>
+                </div>
+                <div class="admin-option" onclick="toggleForm('platform-form')">
+                    <span class="admin-option-text">Add a new platform</span>
+                </div>
+                <div class="admin-option" onclick="toggleForm('delgame-form')">
+                    <span class="admin-option-text">Delete a game</span>
+                </div>
+                <div class="admin-option" onclick="toggleForm('delcategory-form')">
+                    <span class="admin-option-text">Delete a category</span>
+                </div>
+                <div class="admin-option" onclick="toggleForm('delplatform-form')">
+                    <span class="admin-option-text">Delete a platform</span>
+                </div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="forms-container">
+                <form id="game-form" class="form-box" enctype="multipart/form-data">
+                    <h2>Add a new game</h2>
+                    <div class="mb-3">
+                        <label for="game-image" class="form-label">Image</label>
+                        <input type="file" accept="image/jpeg, image/jpg" class="form-control" id="game-image"
+                            name="image" required>
+                        <p id="image-error" class="form-error" style="color: red;"></p>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="add-game-title" class="form-label">Title</label>
+                        <input type="text" class="form-field" id="add-game-title" name="title"
+                            placeholder="Enter the game title">
+                        <p id="add-game-title-error" class="form-error" style="color: red;"></p>
+                    </div>
+                    <div class="mb-1">
+                        <label for="game-description" class="form-label">Description</label>
+                        <textarea class="form-field" id="game-description" name="description"
+                            placeholder="Enter the game description"></textarea>
+                        <p id="game-description-error" class="form-error" style="color: red;"></p>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Platform</label>
+                        <div id="platform-checkboxes">
+                        </div>
+                        <p id="platform-error" class="form-error" style="color: red;"></p>
+                    </div>
+                    <div id="platform-prices">
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Category</label>
+                        <div id="category-checkboxes">
+                        </div>
+                        <p id="category-error" class="form-error" style="color: red;"></p>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="game-year" class="form-label">Year Published</label>
+                        <input type="number" class="form-field" id="game-year" name="game-year"
+                            placeholder="Enter the year published">
+                        <p id="game-year-error" class="form-error" style="color: red;"></p>
+                    </div>
+                    <p id="add-game-message" class="form-error mb-1" style="color: green;"></p>
+                    <button type="submit" class="form-button mt-2">Add Game</button>
+                </form>
+
+
+                <form id="category-form" class="form-box">
+                    <h2>Add a new category</h2>
+                    <div class="mb-1">
+                        <label for="category-name" class="form-label">Category Name</label>
+                        <input type="text" class="form-field" id="category-name" placeholder="Enter the category name"
+                            required>
+                    </div>
+                    <div class="mb-1">
+                        <label for="category-description" class="form-label">Description</label>
+                        <textarea class="form-field" id="category-description"
+                            placeholder="Enter the category description" required></textarea>
+                        <p id="add-cat-message" class="form-error mb-1"></p>
+                    </div>
+                    <button type="submit" class="form-button mt-2">Add Category</button>
+                </form>
+
+                <form id="platform-form" class="form-box">
+                    <h2>Add a new platform</h2>
+                    <div class="mb-1">
+                        <label for="platform-name" class="form-label">Platform Name</label>
+                        <input type="text" class="form-field" id="platform-name" placeholder="Enter the platform name"
+                            required>
+                    </div>
+                    <div class="mb-1">
+                        <label for="platform-description" class="form-label">Description</label>
+                        <textarea class="form-field" id="platform-description"
+                            placeholder="Enter the platform description" required></textarea>
+                        <p id="add-plat-message" class="form-error mb-1"></p>
+                    </div>
+                    <button type="submit" class="form-button mt-2">Add Platform</button>
+                </form>
+
+                <form id="delgame-form" class="form-box">
+                    <h2>Delete a game</h2>
+                    <div class="mb-1">
+                        <label for="del=game-title" class="form-label">Title</label>
+                        <input type="text" class="form-field" id="del-game-title" placeholder="Enter title of the game"
+                            required>
+                        <!-- <p id="del-title-error" class="form-error" style="color: red;"></p>
+                        <p id="del-title-success" class="form-error" style="color: green;"></p> -->
+                        <p id="del-title-message" class="form-error mb-1"></p>
+                        <button type="button" id="search-game" class="form-button mt-1 mb-3">Search Game</button>
+                    </div>
+                    <div id="search-results"></div>
+                </form>
+
+                <form id="delcategory-form" class="form-box">
+                    <h2>Delete a category</h2>
+                    <div class="mb-1">
+                        <label for="category" class="form-label">Category Name</label>
+                        <select id="category" class="form-field" required></select>
+                        <p id="del-cat-success" class="form-error mb-1" style="color: green;"></p>
+                    </div>
+                    <button type="submit" class="form-button mt-2">Delete Category</button>
+                </form>
+
+                <form id="delplatform-form" class="form-box">
+                    <h2>Delete a platform</h2>
+                    <div class="mb-1">
+                        <label for="platform" class="form-label">Platform Name</label>
+                        <select id="platform" class="form-field" required></select>
+                        <p id="del-plat-success" class="form-error mb-1" style="color: green;"></p>
+                    </div>
+                    <button type="submit" class="form-button mt-2">Delete Platform</button>
+                </form>
+            </div>
+        </div>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <span class="mb-3 mb-md-0 text-body-secondary custom-color">© SP Games, Inc</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/singaporepoly/"><svg
+                            class="bi" width="24" height="24">
+                            <use xlink:href="#instagram"></use>
+                        </svg></a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Shit for form displaying -->
+    <script src="./js/formtoggle.js"></script>
+
+    <!-- Shit for game creation form -->
+    <script src="./js/gamecreationform.js"></script>
+
+    <!-- Generate dropdown options -->
+    <script src="./js/generatedropdown.js"></script>
+
+    <!-- Category deletion form -->
+    <script src="./js/categorydeletion.js"></script>
+
+    <!-- Platform deletion form -->
+    <script src="./js/platformdeletion.js"></script>
+
+    <!-- Game deletion form -->
+    <script src="./js/gamedeltion.js"></script>
+
+    <!-- Create Category form -->
+    <script src="./js/createcategory.js"></script>
+
+    <!-- Create Platform form -->
+    <script src="./js/createplatform.js"></script>
+
+    <!-- Navbar shit -->
+    <script src="./js/navbar.js"></script>
+</body>
+
+</html>
